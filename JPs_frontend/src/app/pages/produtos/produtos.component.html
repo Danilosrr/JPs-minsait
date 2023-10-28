@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let produto of produtos">
+        <tr *ngFor="let produto of produtosPaginado">
             <th scope="row">{{ produto.id }}</th>
             <td>{{ produto.nome }}</td>
             <td>{{ produto.codigoBarras }}</td>
@@ -16,3 +16,12 @@
         </tr>
     </tbody>
 </table>
+<div>
+    <ul class="pagination" >
+        <li class="page-item"><a class="page-link" (click)="paginaAnt()"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="page-item" [ngClass]="pagina==1?'disabled':''" (click)="paginaX(1)"><a class="page-link">1</a></li>
+        <li class="page-item"><a class="page-link">...</a></li>
+        <li class="page-item"[ngClass]="pagina==ultimaPagina?'disabled':''" (click)="paginaX(ultimaPagina)"><a class="page-link">{{ultimaPagina}}</a></li>
+        <li class="page-item"><a class="page-link" (click)="paginaProx()"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+</div>
