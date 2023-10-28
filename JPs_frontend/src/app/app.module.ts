@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CadastrarProdutosComponent } from './pages/cadastrar-produtos/cadastrar-produtos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,13 @@ import { CadastrarProdutosComponent } from './pages/cadastrar-produtos/cadastrar
     HomeComponent,
     ProdutosComponent,
     HeaderComponent,
-    CadastrarProdutosComponent
+    CadastrarProdutosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
