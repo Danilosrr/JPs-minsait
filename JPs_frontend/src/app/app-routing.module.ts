@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'produtos/cadastrar', component: CadastrarProdutosComponent },
+  { path: 'produtos/editar/:id', component: CadastrarProdutosComponent },
 ];
 
 @NgModule({
