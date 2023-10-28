@@ -14,8 +14,6 @@ export class CadastrarProdutosComponent {
     preco: new FormControl(0, Validators.min(0.01)),
   });
 
-  ngOnInit(): void {}
-
   enviar() {
     this.enviado = true;
     const data = this.produtoForm.value;
