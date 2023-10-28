@@ -34,6 +34,6 @@
 
 <br/>
 
-<video width="320" height="240" controls>
-  <source src="./JPs_frontend/src/assets/JPsAngular.mp4" type="video/mp4">
-</video>
+<div> 
+  <a href="https://youtu.be/0pVPDSmsixI" target="_blank">video</a> 
+</div>
