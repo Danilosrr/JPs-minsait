@@ -1,0 +1,49 @@
+<form [formGroup]="produtoForm" (ngSubmit)="editar()">
+    <div class="container">
+      <div class="row justify-content-center p-2">
+        <div class="col-9">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome do produto: </label>
+            <input
+              id="nome"
+              type="text"
+              class="form-control"
+              formControlName="nome"
+              [ngClass]="{'is-invalid':enviado && produtoForm.controls.nome.errors}"
+            />
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="mb-3">
+            <label for="idade" class="form-label">código de barras: </label>
+            <input
+              id="codigoBarras"
+              type="text"
+              class="form-control"
+              formControlName="codigoBarras"
+              [ngClass]="{'is-invalid':enviado && produtoForm.controls.codigoBarras.errors}"
+            />
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="mb-3">
+            <label for="preco" class="form-label">Preço: </label>
+            <input
+              id="preco"
+              type="number"
+              class="form-control"
+              formControlName="preco"
+              [ngClass]="{'is-invalid':enviado && produtoForm.controls.preco.errors}"
+            />
+          </div>
+        </div>
+        <div class="col-9">
+          <a class="btn btn-secondary me-1" routerLink="/produtos">Voltar</a>
+          <button type="submit" class="btn btn-primary bg-success">
+            Editar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  

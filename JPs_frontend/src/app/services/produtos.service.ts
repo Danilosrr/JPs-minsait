@@ -12,4 +12,8 @@ export class ProdutosService {
   buscarTodos() {
     return this.http.get<IProduto[]>(this.api);
   }
+
+  buscarPorId(id:number) {
+    return this.http.get<IProduto>(this.api+`/${id}`);
+  }
 }

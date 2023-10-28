@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CadastrarProdutosComponent } from './pages/cadastrar-produtos/cadastrar-produtos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EditarProdutosComponent } from './pages/editar-produtos/editar-produtos.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProdutosComponent,
     HeaderComponent,
     CadastrarProdutosComponent,
+    EditarProdutosComponent,
   ],
   imports: [
     BrowserModule,
