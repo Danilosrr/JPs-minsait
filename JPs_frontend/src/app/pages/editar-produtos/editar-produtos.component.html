@@ -43,7 +43,7 @@
         </div>
         <div class="col-9">
           <a class="btn btn-secondary me-1" routerLink="/produtos">Voltar</a>
-          <button type="submit" class="btn btn-primary bg-success">
+          <button type="submit" class="btn btn-primary bg-success" [disabled]="!produtoForm.valid">
             Editar
           </button>
         </div>
