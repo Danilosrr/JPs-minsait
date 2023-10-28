@@ -21,4 +21,8 @@ export class ProdutosService {
   cadastrar(produto: Omit<IProduto, 'id'>) {
     return this.http.post(this.api, produto).subscribe(r=>{console.log(r)});
   }
+
+  editar(produto: IProduto) {
+    return this.http.put(this.api, produto).subscribe(r=>{console.log(r)});
+  }
 }

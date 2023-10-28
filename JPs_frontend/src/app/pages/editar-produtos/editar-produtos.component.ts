@@ -10,7 +10,7 @@ import { ProdutosService } from 'src/app/services/produtos.service';
   styleUrls: ['./editar-produtos.component.css'],
 })
 export class EditarProdutosComponent {
-  enviado: boolean = false;
+  enviado: boolean = true;
   id: string | null = null;
 
   produtoForm = new FormGroup({
@@ -42,7 +42,10 @@ export class EditarProdutosComponent {
   }
 
   editar() {
-    const data = { ...this.produtoForm.value, id: this.id };
-    console.log(data);
+    if (this.produtoForm.valid) {
+      const produto = { ...this.produtoForm.value, id: Number(this.id) };
+      console.log(produto);
+      this.produtosService.editar(produto as IProduto);
+    }
   }
 }
