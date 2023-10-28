@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IProduto } from 'src/app/interfaces/produto';
 import { ProdutosService } from 'src/app/services/produtos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-produtos',
@@ -51,5 +52,25 @@ export class ProdutosComponent {
     if (this.pagina == pagina) return;
     this.pagina = pagina;
     this.paginar(this.pagina);
+  }
+
+  deletar(nome: string, id: number) {
+    Swal.fire({
+      title: `Deletar produto ${nome}?`,
+      text: 'essa operação não pode ser revertida!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, deletar!',
+      cancelButtonText: 'cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.produtosService.deletar(id).subscribe((r) => {
+          this.produtos = this.produtos.filter((produto) => produto.id !== id);
+          this.paginar(this.pagina);
+        });
+      }
+    });
   }
 }

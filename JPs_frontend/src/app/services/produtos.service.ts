@@ -24,4 +24,8 @@ export class ProdutosService {
   editar(produto: IProduto) {
     return this.http.put(this.api, produto);
   }
+
+  deletar(id:number) {
+    return this.http.delete(this.api+`/${id}`)
+  }
 }
