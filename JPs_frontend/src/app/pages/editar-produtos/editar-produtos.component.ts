@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IProduto } from 'src/app/interfaces/produto';
 import { ProdutosService } from 'src/app/services/produtos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-produtos',
@@ -10,12 +11,13 @@ import { ProdutosService } from 'src/app/services/produtos.service';
   styleUrls: ['./editar-produtos.component.css'],
 })
 export class EditarProdutosComponent {
-  enviado: boolean = true;
   id: string | null = null;
-
   produtoForm = new FormGroup({
-    nome: new FormControl('', [Validators.required]),
-    codigoBarras: new FormControl('', [Validators.required]),
+    nome: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    codigoBarras: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(100),
+    ]),
     preco: new FormControl(0, Validators.min(0.01)),
   });
 
@@ -42,10 +44,26 @@ export class EditarProdutosComponent {
   }
 
   editar() {
-    if (this.produtoForm.valid) {
-      const produto = { ...this.produtoForm.value, id: Number(this.id) };
-      console.log(produto);
-      this.produtosService.editar(produto as IProduto);
-    }
+    const produto = { ...this.produtoForm.value, id: Number(this.id) };
+    console.log(produto);
+    this.produtosService.editar(produto as IProduto).subscribe((r) => {
+      Swal.fire({
+        title: 'Produto editado',
+        text: 'produto editado com sucesso!',
+        icon: 'success',
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 2500,
+      });
+    },(error)=>{
+      Swal.fire({
+        title: 'Produto não cadastrado',
+        text: 'erro status '+error.status,
+        icon: 'error',
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 2500,
+      });
+    });
   }
 }

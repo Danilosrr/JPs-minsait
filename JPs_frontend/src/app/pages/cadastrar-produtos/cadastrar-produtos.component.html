@@ -9,8 +9,9 @@
             type="text"
             class="form-control"
             formControlName="nome"
-            [ngClass]="{'is-invalid':enviado && produtoForm.controls.nome.errors}"
+            [ngClass]="{'is-invalid': !!produtoForm.value['nome'] && produtoForm.controls.nome.errors}"
           />
+          <div class="invalid-feedback">campo obrigatório, máximo de 100 caracteres</div>
         </div>
       </div>
       <div class="col-9">
@@ -21,8 +22,9 @@
             type="text"
             class="form-control"
             formControlName="codigoBarras"
-            [ngClass]="{'is-invalid':enviado && produtoForm.controls.codigoBarras.errors}"
+            [ngClass]="{'is-invalid':!!produtoForm.value['codigoBarras']  && produtoForm.controls.codigoBarras.errors}"
           />
+          <div class="invalid-feedback">campo obrigatório, máximo de 100 caracteres</div>
         </div>
       </div>
       <div class="col-9">
@@ -33,13 +35,14 @@
             type="number"
             class="form-control"
             formControlName="preco"
-            [ngClass]="{'is-invalid':enviado && produtoForm.controls.preco.errors}"
+            [ngClass]="{'is-invalid':produtoForm.controls.preco.errors}"
           />
+          <div class="invalid-feedback">valor mínimo: 0.01</div>
         </div>
       </div>
       <div class="col-9">
         <a class="btn btn-secondary me-1" routerLink="/">Voltar</a>
-        <button type="submit" class="btn btn-primary bg-success">
+        <button type="submit" class="btn btn-primary bg-success" [disabled]="!produtoForm.valid">
           Cadastrar
         </button>
       </div>

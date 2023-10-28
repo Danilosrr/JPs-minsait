@@ -12,7 +12,7 @@ export class ProdutosComponent {
   produtosPaginado: IProduto[] = [];
   pagina: number = 1;
   ultimaPagina: number = 1;
-  tamanhoPagina: number = 10;
+  tamanhoPagina: number = 5;
 
   constructor(private produtosService: ProdutosService) {}
 
