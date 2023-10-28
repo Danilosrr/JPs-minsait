@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IProduto } from 'src/app/interfaces/produto';
+import { ProdutosService } from 'src/app/services/produtos.service';
 
 @Component({
   selector: 'app-cadastrar-produtos',
@@ -14,9 +16,13 @@ export class CadastrarProdutosComponent {
     preco: new FormControl(0, Validators.min(0.01)),
   });
 
+  constructor(private produtosService: ProdutosService) {}
+
   enviar() {
     this.enviado = true;
-    const data = this.produtoForm.value;
-    console.log(data);
+    if (this.produtoForm.valid) {
+      const produto = this.produtoForm.value as IProduto;
+      this.produtosService.cadastrar(produto);
+    }
   }
 }
